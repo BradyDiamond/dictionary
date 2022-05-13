@@ -1,4 +1,4 @@
-<h2>Definition:<%= @definition.body %></h2>
+<%# <h2>Definition:<%= @definition.body %></h2>
 <h3>Word: <%= @definition.word.name %></h3>
 
 <form action="/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" method="post">
@@ -16,4 +16,4 @@
   <button type="submit">Delete definition</button>
 </form>
 
-<a href="/words/<%= @definition.word.id %>">Back to <%= @definition.word.name %></a>
+<a href="/words/<%= @definition.word.id %>">Back to <%= @definition.word.name %></a> %>
