@@ -14,8 +14,8 @@ describe '#Definition' do
 
   describe('#==') do
     it("is the same Definition if it has the same attributes as another definition") do
-      definition =  Definition.new("purple ooze inside a gummy bear", @word.id, nil)
-      definition2 =  Definition.new("purple ooze inside a gummy bear", @word.id, nil)
+      definition =  Definition.new("A stout beatle like creature", @word.id, nil)
+      definition2 =  Definition.new("A stout beatle like creature", @word.id, nil)
       expect(definition).to(eq(definition2))
     end
   end
@@ -24,7 +24,7 @@ describe '#Definition' do
     it("returns a list of all definitions") do
       definition = Definition.new("A stout beatle like creature", @word.id, nil)
       definition.save()
-      definition2 = Definition.new("purple ooze inside a gummy bear", @word.id, nil)
+      definition2 = Definition.new("a stinky friend", @word.id, nil)
       definition2.save()
       expect(Definition.all).to(eq([definition, definition2]))
     end
@@ -80,8 +80,8 @@ describe '#Definition' do
 
   describe('.find_by_word') do
     it("finds definitions for a word") do
-      definition2 = Word.new("bunger", nil)
-      definition2.save
+      word2 = Word.new("bunger", nil)
+      word2.save
       definition = Definition.new("purple ooze inside a gummy bear", @word.id, nil)
       definition.save()
       definition2 = Definition.new("A stout beatle like creature", word2.id , nil)
