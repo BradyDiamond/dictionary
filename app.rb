@@ -16,7 +16,7 @@ get('/words') do
 end
 
 get('/words/:id/edit') do
-  @words = AWord.find(params[:id].to_i())
+  @words = Word.find(params[:id].to_i())
   erb(:edit_word)
 end
 
@@ -52,3 +52,28 @@ delete('/words/:id') do
   erb(:words)
 end
 
+post('words/:id/definitions') do
+  @word = Word.find(params[:id].to_i())
+  definition = Definition.new(params[:definition_body], @word.id, nil)
+  definition.save()
+  erb(:word)
+end
+
+get('/words/:id/definations/:defination_id') do
+  @defination = Definition.find(params[:definition_id].to_i())
+  erb(:defination)
+end
+
+patch('/words/:id/songs/:definition_id') do
+  @word = Word.find(params[:id].to_i())
+  defination = Defination.find(params[:definition_id].to_i())
+  defination.update(params[:body], @word.id)
+  erb(:word)
+end
+
+delete('/words/:id/definitions/definition_id') do
+  definition = Definition.find(params[:definition_id].to_i())
+  definition.delete
+  @word = Word.find(params[:id].to_i())
+  erb(:word)
+end
