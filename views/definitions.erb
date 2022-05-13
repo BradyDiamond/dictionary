@@ -1,11 +1,11 @@
-<h2>Word: <%= @definition.word.name %></h2>
-<h3>Definition: <%= @definition.body %></h3>
+<h2>Definition:<%= @definition.body %></h2>
+<h3>Word: <%= @definition.find_by_word.word %></h3>
 
 <form action="/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
 
   <label for="name">Change word definition</label>
-  <input id="def_name" name="name" type="text">
+  <input id="name" name="name" type="text">
 
   <button type="submit">change word definition</button>
 </form>
