@@ -1,5 +1,5 @@
 <h2>Word: <%= @definition.word.name %></h2>
-<h3>Definition: <%= @definition.name %></h3>
+<h3>Definition: <%= @definition.body %></h3>
 
 <form action="/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" method="post">
   <input name="_method" type="hidden" value="patch">

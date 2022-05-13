@@ -6,19 +6,19 @@ also_reload('lib/**/*.rb')
 
 class Definition
   attr_reader :id
-  attr_accessor :name, :word_id
+  attr_accessor :body, :word_id
 
   @@definitions = {}
   @@total_rows = 0
 
-  def initialize(name, word_id, id)
-    @name = name
+  def initialize(body, word_id, id)
+    @body = body
     @word_id = word_id
     @id = id || @@total_rows += 1
   end
 
   def ==(definition_to_compare)
-    (self.name() == definition_to_compare.name()) && (self.word_id() == definition_to_compare.word_id())
+    (self.body() == definition_to_compare.body()) && (self.word_id() == definition_to_compare.word_id())
   end
 
   def self.all
@@ -26,7 +26,7 @@ class Definition
   end
 
   def save
-    @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
+    @@definitions[self.id] = Definition.new(self.body, self.word_id, self.id)
   end
 
   def self.find_by_word(word_id)
@@ -47,10 +47,10 @@ class Definition
     @@definitions[id]
   end
 
-  def update(name, word_id)
-    self.name = name
+  def update(body, word_id)
+    self.body = body
     self.word_id = word_id
-    @@definitions[self.id] = Definition.new(self.name, self.word_id, self.id)
+    @@definitions[self.id] = Definition.new(self.body, self.word_id, self.id)
   end
 
   def delete

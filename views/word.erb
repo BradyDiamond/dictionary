@@ -2,7 +2,7 @@
 
 <h3>Definitions</h3>
 
-  <% if @word.definitions %>
+  <% if @word.definitions.any? %>
     <ul>
       <% @word.definitions.each do |definition| %>
         <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.name %></a></li>
@@ -16,8 +16,8 @@
 
 <form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">
-    <label for="def_name">Definition</label>
-    <input id="def_name" name="name" class="form-control" type="text">
+    <label for="def_body">Definition</label>
+    <input id="def_body" name="def_body" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add a definition</button>
 </form>

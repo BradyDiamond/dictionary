@@ -54,7 +54,7 @@ end
 
 post('words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
-  definition = Definition.new(params[:def_name], @word.id, nil)
+  definition = Definition.new(params[:def_body], @word.id, nil)
   definition.save()
   erb(:word)
 end
@@ -67,7 +67,7 @@ end
 patch('/words/:id/definitions/:def_id') do
   @word = Word.find(params[:id].to_i())
   defination = Defination.find(params[:def_id].to_i())
-  defination.update(params[:name], @word.id)
+  defination.update(params[:body], @word.id)
   erb(:word)
 end
 
