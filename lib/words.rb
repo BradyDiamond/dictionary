@@ -14,9 +14,8 @@ class Word
     @@words.delete(self.id)
   end
 
-  def update(name, id)
+  def update(name)
     @name = name
-    @id = id || @@total_rows += 1
   end
  
   def initialize(name, id)

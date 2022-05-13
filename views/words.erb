@@ -2,14 +2,6 @@
 
 <h3>Words</h3>
 
-<form action="/words">
-  <div class="form-group">
-    <label for="search">Search</label>
-    <input id="search" name="search" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Go!</button>
-</form>
-
 <% if @words.any? %>
   <ul>
     <% @words.each do |word| %>

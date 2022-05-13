@@ -7,7 +7,7 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @words = Word.all
-  erb(:words)
+  redirect to('/words')
 end
 
 get('/words') do
@@ -16,7 +16,7 @@ get('/words') do
 end
 
 get('/words/:id/edit') do
-  @words = Word.find(params[:id].to_i())
+  @word = Word.find(params[:id].to_i())
   erb(:edit_word)
 end
 
@@ -30,7 +30,7 @@ get('/words/:id') do
 end
 
 post('/words') do
-  name = params[:word_name]
+  name = params[:name]
   id = params[:id]
   word = Word.new(name, nil)
   word.save()
@@ -41,8 +41,7 @@ end
 patch('/words/:id') do
   @word = Word.find(params[:id].to_i())
   @word.update(params[:name])
-  @words = Word.all
-  erb(:words)
+  redirect to('/words')
 end
 
 delete('/words/:id') do
@@ -54,7 +53,7 @@ end
 
 post('words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
-  definition = Definition.new(params[:def_body], @word.id, nil)
+  definition = Definition.new(params[:body], @word.id, nil)
   definition.save()
   erb(:word)
 end
