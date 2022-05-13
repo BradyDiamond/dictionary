@@ -6,7 +6,7 @@ also_reload('lib/**/*.rb')
 
 
 class Word
-  attr_reader :id, :name
+  attr_accessor :id, :name
   @@words = {}
   @@total_rows = 0
 

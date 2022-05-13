@@ -26,14 +26,13 @@ end
 
 get('/words/:id') do
   @word = Word.find(params[:id].to_i())
-  @definitions = @word.definitions
   erb(:word)
 end
 
 post('/words') do
-  name = params[:name]
+  name = params[:word_name]
   id = params[:id]
-  word = Word.new(name, id)
+  word = Word.new(name, nil)
   word.save()
   @words = Word.all()
   erb(:words)
@@ -41,7 +40,7 @@ end
 
 patch('/words/:id') do
   @word = Word.find(params[:id].to_i())
-  @word.update(params[:name],params[:id])
+  @word.update(params[:name])
   @words = Word.all
   erb(:words)
 end
@@ -55,25 +54,25 @@ end
 
 post('words/:id/definitions') do
   @word = Word.find(params[:id].to_i())
-  definition = Definition.new(params[:definition_body], @word.id, nil)
+  definition = Definition.new(params[:def_name], @word.id, nil)
   definition.save()
   erb(:word)
 end
 
-get('/words/:id/definations/:defination_id') do
-  @defination = Definition.find(params[:definition_id].to_i())
+get('/words/:id/definations/:def_id') do
+  @defination = Definition.find(params[:def_id].to_i())
   erb(:definations)
 end
 
-patch('/words/:id/songs/:definition_id') do
+patch('/words/:id/definitions/:def_id') do
   @word = Word.find(params[:id].to_i())
-  defination = Defination.find(params[:definition_id].to_i())
-  defination.update(params[:body], @word.id)
+  defination = Defination.find(params[:def_id].to_i())
+  defination.update(params[:name], @word.id)
   erb(:word)
 end
 
-delete('/words/:id/definitions/definition_id') do
-  definition = Definition.find(params[:definition_id].to_i())
+delete('/words/:id/definitions/def_id') do
+  definition = Definition.find(params[:def_id].to_i())
   definition.delete
   @word = Word.find(params[:id].to_i())
   erb(:word)
