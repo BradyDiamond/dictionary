@@ -63,7 +63,7 @@ describe '#Definition' do
       definition = Definition.new("purple ooze inside a gummy bear", @word.id, nil)
       definition.save()
       definition.update("whole lotta gobbly gewk", @word.id)
-      expect(definition.body).to(eq("whole lotta gobbly gewk"))
+      expect(definition.name).to(eq("whole lotta gobbly gewk"))
     end
   end
 

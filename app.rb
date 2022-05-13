@@ -26,6 +26,7 @@ end
 
 get('/words/:id') do
   @word = Word.find(params[:id].to_i())
+  @definitions = @word.definitions
   erb(:word)
 end
 
@@ -61,7 +62,7 @@ end
 
 get('/words/:id/definations/:defination_id') do
   @defination = Definition.find(params[:definition_id].to_i())
-  erb(:defination)
+  erb(:definations)
 end
 
 patch('/words/:id/songs/:definition_id') do
