@@ -6,7 +6,7 @@ also_reload('lib/**/*.rb')
 
 class Definition
   attr_reader :id
-  attr_accessor :name, :word_id
+  attr_accessor :body, :word_id
 
   @@definitions = {}
   @@total_rows = 0
@@ -47,8 +47,8 @@ class Definition
     @@definitions[id]
   end
 
-  def update(name, word_id)
-    self.body = name
+  def update(body, word_id)
+    self.body = body
     self.word_id = word_id
     @@definitions[self.id] = Song.new(self.body, self.album_id, self.id)
   end

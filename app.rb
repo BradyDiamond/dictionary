@@ -29,7 +29,7 @@ get('/words/:id') do
   erb(:word)
 end
 
-post('/albums') do
+post('/words') do
   name = params[:name]
   id = params[:id]
   word = Word.new(name, id)
@@ -39,7 +39,7 @@ post('/albums') do
 end
 
 patch('/words/:id') do
-  @word = Album.find(params[:id].to_i())
+  @word = Word.find(params[:id].to_i())
   @word.update(params[:name],params[:id])
   @words = Word.all
   erb(:words)
