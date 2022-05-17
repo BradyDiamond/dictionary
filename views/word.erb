@@ -2,7 +2,7 @@
 
 <h3>Definitions</h3>
 
-  <% if @word.definitions. %>
+  <% if @word.definitions %>
     <ul>
       <% @word.definitions.each do |definition| %>
         <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.body %></a></li>
