@@ -1,7 +1,5 @@
 require 'rspec'
-require 'words'
 require 'definition'
-require 'pry'
 
 describe '#Definition' do
 

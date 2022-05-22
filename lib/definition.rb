@@ -1,8 +1,3 @@
-require('sinatra')
-require('sinatra/reloader')
-require('./lib/words')
-require('pry')
-also_reload('lib/**/*.rb')
 
 class Definition
   attr_reader :id
