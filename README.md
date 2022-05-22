@@ -5,6 +5,11 @@
 ## Technologies Used
 
 * _RUBY_
+* _rspec_
+* _cappybara_
+* _HTML_
+* _sinatra_
+
 
 ## Description
 
@@ -20,7 +25,7 @@
 
 ## Known Bugs
 
-* _cannot add definition currently_
+* _no known bugs_
 
 ## License
 _licensed under the [MIT License] (LICENSE)_
